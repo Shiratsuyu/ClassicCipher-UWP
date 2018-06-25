@@ -1,8 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
-using Microsoft.Practices.ServiceLocation;
 using ClassicCipher.Model;
+using ClassicCipher.View;
+using CommonServiceLocator;
 
 namespace ClassicCipher.ViewModel
 {
@@ -15,8 +16,10 @@ namespace ClassicCipher.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
-        public const string SecondPageKey = "SecondPage";
-
+        public const string CaesarPageKey = "CaesarPage";
+        public const string PlayfairPageKey = "PlayfairPage";
+        public const string HillPageKey = "HillPageKey";
+        public const string VigenerePageKey = "VigenerePage";
         /// <summary>
         /// This property can be used to force the application to run with design time data.
         /// </summary>
@@ -33,7 +36,10 @@ namespace ClassicCipher.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             var nav = new NavigationService();
-            nav.Configure(SecondPageKey, typeof(SecondPage));
+            nav.Configure(CaesarPageKey, typeof(CaesarPage));
+            nav.Configure(PlayfairPageKey, typeof(PlayfairPage));
+            nav.Configure(HillPageKey, typeof(HillPage));
+            nav.Configure(VigenerePageKey, typeof(VigenerePage));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             SimpleIoc.Default.Register<IDialogService, DialogService>();

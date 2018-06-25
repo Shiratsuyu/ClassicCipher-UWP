@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="ClassicCipher.View.VigenerePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClassicCipher.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <AcrylicBrush BackgroundSource="HostBackdrop" FallbackColor="#FFE6E6E6" TintColor="White" TintOpacity="0.5"/>
+    </Page.Background>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.ColumnSpan="3" Margin="15" Style="{StaticResource ScalingLabelButton}" Content="Vigenere Cipher"/>
+        <Grid Grid.Row="2" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="明文"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密" Margin="15,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="当前密钥"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="解密"/>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="明文"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密" Margin="15,0,0,0"/>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="密文"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="解密" Margin="15,0,0,0"/>
+        </Grid>
+    </Grid>
+</Page>

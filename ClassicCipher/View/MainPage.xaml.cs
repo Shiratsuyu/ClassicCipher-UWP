@@ -2,11 +2,10 @@
 using Windows.UI.Xaml.Navigation;
 using ClassicCipher.ViewModel;
 
-namespace ClassicCipher
+namespace ClassicCipher.View
 {
     public sealed partial class MainPage
     {
-        public MainViewModel Vm => (MainViewModel)DataContext;
 
         public MainPage()
         {
@@ -16,7 +15,6 @@ namespace ClassicCipher
 
             Loaded += (s, e) =>
             {
-                Vm.RunClock();
             };
         }
 
@@ -31,7 +29,6 @@ namespace ClassicCipher
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            Vm.StopClock();
             base.OnNavigatingFrom(e);
         }
     }

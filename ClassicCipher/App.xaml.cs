@@ -1,9 +1,12 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.Core;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using ClassicCipher.View;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 
@@ -35,6 +38,9 @@ namespace ClassicCipher
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+                //导航后动作
+                rootFrame.Navigated += OnNavigated;
+
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
@@ -42,6 +48,14 @@ namespace ClassicCipher
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+                // 按下后退按钮后的动作
+                SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+                // 判断按钮是否显示
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    rootFrame.CanGoBack ?
+                        AppViewBackButtonVisibility.Visible :
+                        AppViewBackButtonVisibility.Collapsed;
             }
 
             if (e.PrelaunchActivated == false)
@@ -61,6 +75,9 @@ namespace ClassicCipher
             Messenger.Default.Register<NotificationMessageAction<string>>(
                 this,
                 HandleNotificationMessage);
+
+            // 不隐藏标题栏
+            CoreApplication.GetCurrentView().TitleBar.ExtendViewIntoTitleBar = false;
         }
 
         private void HandleNotificationMessage(NotificationMessageAction<string> message)
@@ -90,6 +107,36 @@ namespace ClassicCipher
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        /// <summary>
+        /// 判断和处理后缀按钮是否显示
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnNavigated(object sender, NavigationEventArgs e)
+        {
+            // Each time a navigation event occurs, update the Back button's visibility
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                ((Frame)sender).CanGoBack ?
+                    AppViewBackButtonVisibility.Visible :
+                    AppViewBackButtonVisibility.Collapsed;
+        }
+
+        /// <summary>
+        /// 按下后退按钮（设备硬件按钮或是UWP标题栏上的软件按钮）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            Frame rootFrame = Window.Current.Content as Frame;
+
+            if (rootFrame != null && rootFrame.CanGoBack)
+            {
+                e.Handled = true;
+                rootFrame.GoBack();
+            }
         }
     }
 }

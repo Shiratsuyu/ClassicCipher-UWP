@@ -1,0 +1,126 @@
+﻿<Page
+    x:Class="ClassicCipher.View.PlayfairPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ClassicCipher.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <AcrylicBrush BackgroundSource="HostBackdrop" FallbackColor="#FFE6E6E6" TintColor="White" TintOpacity="0.5"/>
+    </Page.Background>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.ColumnSpan="3" Margin="15" Style="{StaticResource ScalingLabelButton}" Content="Playfair Cipher"/>
+        <Grid Grid.Row="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="A" Margin="7.5,0"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="B" Margin="7.5,0"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="C" Margin="7.5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="D" Margin="7.5,0"/>
+            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="E" Margin="7.5,0"/>
+        </Grid>
+        <Grid Grid.Row="2" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="F" Margin="7.5,0"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="G" Margin="7.5,0"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="H" Margin="7.5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="I/J" Margin="7.5,0"/>
+            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="K" Margin="7.5,0"/>
+        </Grid>
+        <Grid Grid.Row="3" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="L" Margin="7.5,0"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="M" Margin="7.5,0"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="N" Margin="7.5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="O" Margin="7.5,0"/>
+            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="P" Margin="7.5,0"/>
+        </Grid>
+        <Grid Grid.Row="4" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="Q" Margin="7.5,0"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="R" Margin="7.5,0"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="S" Margin="7.5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="T" Margin="7.5,0"/>
+            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="U" Margin="7.5,0"/>
+        </Grid>
+        <Grid Grid.Row="5" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="V" Margin="7.5,0"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="W" Margin="7.5,0"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="X" Margin="7.5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="Y" Margin="7.5,0"/>
+            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="Z" Margin="7.5,0"/>
+        </Grid>
+        <Button Grid.Row="6" Height="70" MaxHeight="70" Margin="22.5,0" Style="{StaticResource ScalingButtonSmall}" Content="重置矩阵"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Height="70" MaxHeight="70" Margin="15,0"/>
+        <Grid Grid.Row="2" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="密钥"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="生成矩阵"/>
+        </Grid>
+        <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Height="70" MaxHeight="70" Margin="15,0"/>
+        <Grid Grid.Row="4" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="明文"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密"/>
+        </Grid>
+        <TextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Height="70" MaxHeight="70" Margin="15,0"/>
+        <Grid Grid.Row="6" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="密文"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="解密"/>
+        </Grid>
+    </Grid>
+</Page>
