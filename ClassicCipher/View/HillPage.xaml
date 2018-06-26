@@ -53,11 +53,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="P₁" Margin="5,0"/>
-            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[2], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[2], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="P₁" Margin="5,0"/>
         </Grid>
         <Grid Grid.Row="4" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -66,10 +65,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="P₂" Margin="5,0"/>
-            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[3], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[4], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[5], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[3], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[4], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[5], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="P₂" Margin="5,0"/>
         </Grid>
         <Grid Grid.Row="5" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -78,10 +77,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="P₃" Margin="5,0"/>
-            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[6], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[7], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[8], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[6], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[7], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding KeyList[8], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="P₃" Margin="5,0"/>
         </Grid>
         <Button Grid.Row="6" Height="70" MaxHeight="70" Margin="15,0" Style="{StaticResource ScalingButtonSmall}" Content="密钥矩阵"/>
         <Grid Grid.Row="1" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
@@ -111,10 +110,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="C₁" Margin="5,0"/>
-            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[2], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[2], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="C₁" Margin="5,0"/>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -123,10 +122,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="C₂" Margin="5,0"/>
-            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[3], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[4], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[5], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[3], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[4], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[5], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="C₂" Margin="5,0"/>
         </Grid>
         <Grid Grid.Row="5" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -135,10 +134,10 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="C₃" Margin="5,0"/>
-            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[6], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[7], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
-            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[8], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[6], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[7], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding InverseKeyList[8], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="C₃" Margin="5,0"/>
         </Grid>
         <Button Grid.Row="6" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0" Style="{StaticResource ScalingButtonSmall}" Content="逆矩阵"/>
     </Grid>
