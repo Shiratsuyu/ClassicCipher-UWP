@@ -26,10 +26,5 @@ namespace ClassicCipher.View
                 Frame.GoBack();
             }
         }
-
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            base.OnNavigatingFrom(e);
-        }
     }
 }

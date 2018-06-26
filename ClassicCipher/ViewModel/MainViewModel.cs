@@ -29,8 +29,8 @@ namespace ClassicCipher.ViewModel
         {
             get
             {
-                return _caesarNavigateCommand
-                       ?? (_caesarNavigateCommand = new RelayCommand(
+                return _caesarNavigateCommand ??
+                       (_caesarNavigateCommand = new RelayCommand(
                            () => _navigationService.NavigateTo(ViewModelLocator.CaesarPageKey),
                            () => true));
             }
@@ -40,8 +40,8 @@ namespace ClassicCipher.ViewModel
         {
             get
             {
-                return _playfairNavigateCommand
-                       ?? (_playfairNavigateCommand = new RelayCommand(
+                return _playfairNavigateCommand ??
+                       (_playfairNavigateCommand = new RelayCommand(
                            () => _navigationService.NavigateTo(ViewModelLocator.PlayfairPageKey),
                            () => true));
             }

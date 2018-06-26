@@ -5,7 +5,12 @@
     xmlns:local="using:ClassicCipher.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:viewModel="using:ClassicCipher.ViewModel"
+    mc:Ignorable="d"
+    Loaded="CancelFocusonPageLoaded">
+    <Page.DataContext>
+        <viewModel:CaesarViewModel/>
+    </Page.DataContext>
     <Page.Background>
         <AcrylicBrush BackgroundSource="HostBackdrop" FallbackColor="#FFE6E6E6" TintColor="White" TintOpacity="0.5"/>
     </Page.Background>
@@ -31,9 +36,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="偏移量"/>
-            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Center" Padding="0" FontSize="25" Text="0"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Center" Padding="0" FontSize="25" Text="{Binding OffSet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
         </Grid>
-        <Slider Grid.Row="2" Grid.Column="0" Margin="15" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <Slider Grid.Row="2" Grid.Column="0" Margin="15" HorizontalAlignment="Stretch" VerticalAlignment="Center" Maximum="25" Minimum="-25" Value="{Binding OffSet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -41,8 +46,8 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="明文"/>
-            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密" Margin="15,0,0,0"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Text="{Binding PlainText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="AlphaFilter"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密" Margin="15,0,0,0" Command="{Binding EncryptCommand}"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -51,8 +56,8 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="密文"/>
-            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="解密" Margin="15,0,0,0"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Text="{Binding CipherText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="AlphaFilter"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="解密" Margin="15,0,0,0" Command="{Binding DecryptCommand}"/>
         </Grid>
         <Grid Grid.Row="3" Grid.ColumnSpan="3" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -100,19 +105,19 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="A" Margin="5,0"/>
-            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="B" Margin="5,0"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="C" Margin="5,0"/>
-            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="D" Margin="5,0"/>
-            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="E" Margin="5,0"/>
-            <Button Grid.Column="5" Style="{StaticResource ScalingButtonSmall}" Content="F" Margin="5,0"/>
-            <Button Grid.Column="6" Style="{StaticResource ScalingButtonSmall}" Content="G" Margin="5,0"/>
-            <Button Grid.Column="7" Style="{StaticResource ScalingButtonSmall}" Content="H" Margin="5,0"/>
-            <Button Grid.Column="8" Style="{StaticResource ScalingButtonSmall}" Content="I" Margin="5,0"/>
-            <Button Grid.Column="9" Style="{StaticResource ScalingButtonSmall}" Content="J" Margin="5,0"/>
-            <Button Grid.Column="10" Style="{StaticResource ScalingButtonSmall}" Content="K" Margin="5,0"/>
-            <Button Grid.Column="11" Style="{StaticResource ScalingButtonSmall}" Content="L" Margin="5,0"/>
-            <Button Grid.Column="12" Style="{StaticResource ScalingButtonSmall}" Content="M" Margin="5,0"/>
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[0], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[1], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[2], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[3], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="4" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[4], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="5" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[5], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="6" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[6], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="7" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[7], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="8" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[8], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="9" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[9], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="10" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[10], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="11" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[11], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="12" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[12], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
         </Grid>
         <Grid Grid.Row="5" Grid.ColumnSpan="3" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -130,18 +135,18 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="M" Margin="5,0"/>
-            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="N" Margin="5,0"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="O" Margin="5,0"/>
-            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="P" Margin="5,0"/>
-            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="Q" Margin="5,0"/>
-            <Button Grid.Column="5" Style="{StaticResource ScalingButtonSmall}" Content="R" Margin="5,0"/>
-            <Button Grid.Column="6" Style="{StaticResource ScalingButtonSmall}" Content="S" Margin="5,0"/>
-            <Button Grid.Column="7" Style="{StaticResource ScalingButtonSmall}" Content="T" Margin="5,0"/>
-            <Button Grid.Column="8" Style="{StaticResource ScalingButtonSmall}" Content="U" Margin="5,0"/>
-            <Button Grid.Column="9" Style="{StaticResource ScalingButtonSmall}" Content="V" Margin="5,0"/>
-            <Button Grid.Column="10" Style="{StaticResource ScalingButtonSmall}" Content="W" Margin="5,0"/>
-            <Button Grid.Column="11" Style="{StaticResource ScalingButtonSmall}" Content="X" Margin="5,0"/>
+            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="N" Margin="5,0"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="O" Margin="5,0"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="P" Margin="5,0"/>
+            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="Q" Margin="5,0"/>
+            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="R" Margin="5,0"/>
+            <Button Grid.Column="5" Style="{StaticResource ScalingButtonSmall}" Content="S" Margin="5,0"/>
+            <Button Grid.Column="6" Style="{StaticResource ScalingButtonSmall}" Content="T" Margin="5,0"/>
+            <Button Grid.Column="7" Style="{StaticResource ScalingButtonSmall}" Content="U" Margin="5,0"/>
+            <Button Grid.Column="8" Style="{StaticResource ScalingButtonSmall}" Content="V" Margin="5,0"/>
+            <Button Grid.Column="9" Style="{StaticResource ScalingButtonSmall}" Content="W" Margin="5,0"/>
+            <Button Grid.Column="10" Style="{StaticResource ScalingButtonSmall}" Content="X" Margin="5,0"/>
+            <Button Grid.Column="11" Style="{StaticResource ScalingButtonSmall}" Content="Y" Margin="5,0"/>
             <Button Grid.Column="12" Style="{StaticResource ScalingButtonSmall}" Content="Z" Margin="5,0"/>
         </Grid>
         <Grid Grid.Row="6" Grid.ColumnSpan="3" Height="70" MaxHeight="70" Margin="15,0">
@@ -160,19 +165,19 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingButtonSmall}" Content="M" Margin="5,0"/>
-            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="N" Margin="5,0"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="O" Margin="5,0"/>
-            <Button Grid.Column="3" Style="{StaticResource ScalingButtonSmall}" Content="P" Margin="5,0"/>
-            <Button Grid.Column="4" Style="{StaticResource ScalingButtonSmall}" Content="Q" Margin="5,0"/>
-            <Button Grid.Column="5" Style="{StaticResource ScalingButtonSmall}" Content="R" Margin="5,0"/>
-            <Button Grid.Column="6" Style="{StaticResource ScalingButtonSmall}" Content="S" Margin="5,0"/>
-            <Button Grid.Column="7" Style="{StaticResource ScalingButtonSmall}" Content="T" Margin="5,0"/>
-            <Button Grid.Column="8" Style="{StaticResource ScalingButtonSmall}" Content="U" Margin="5,0"/>
-            <Button Grid.Column="9" Style="{StaticResource ScalingButtonSmall}" Content="V" Margin="5,0"/>
-            <Button Grid.Column="10" Style="{StaticResource ScalingButtonSmall}" Content="W" Margin="5,0"/>
-            <Button Grid.Column="11" Style="{StaticResource ScalingButtonSmall}" Content="X" Margin="5,0"/>
-            <Button Grid.Column="12" Style="{StaticResource ScalingButtonSmall}" Content="Z" Margin="5,0"/>
+            <TextBox Grid.Column="0" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[13], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[14], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="2" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[15], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[16], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="4" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[17], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="5" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[18], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="6" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[19], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="7" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[20], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="8" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[21], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="9" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[22], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="10" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[23], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="11" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[24], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
+            <TextBox Grid.Column="12" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding OffSetAlphabet[25], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
         </Grid>
     </Grid>
 </Page>

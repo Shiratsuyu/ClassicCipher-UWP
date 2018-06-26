@@ -5,10 +5,14 @@
     xmlns:local="using:ClassicCipher.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <Page.Background>
-        <AcrylicBrush BackgroundSource="HostBackdrop" FallbackColor="#FFE6E6E6" TintColor="White" TintOpacity="0.5"/>
-    </Page.Background>
+    xmlns:viewModel="using:ClassicCipher.ViewModel"
+    mc:Ignorable="d"
+    Style="{StaticResource AcrylicPage}"
+    Loaded="CancelFocusonPageLoaded">
+    <Page.DataContext>
+        <viewModel:VigenereViewModel/>
+    </Page.DataContext>
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -31,9 +35,9 @@
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="明文"/>
-            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密" Margin="15,0,0,0"/>
+            <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="密钥"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Text="{Binding InputKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="AlphaFilter"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="变更" Margin="15,0,0,0" Command="{Binding ChangeKeyCommand}"/>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -41,7 +45,8 @@
                 <ColumnDefinition Width="5*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="当前密钥"/>
-            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="解密"/>
+            <TextBox Grid.Column="1" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding VigenereKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -50,8 +55,8 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="明文"/>
-            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密" Margin="15,0,0,0"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Text="{Binding PlainText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="AlphaFilter"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="加密" Margin="15,0,0,0" Command="{Binding EncryptCommand}"/>
         </Grid>
         <Grid Grid.Row="5" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -60,8 +65,8 @@
                 <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="密文"/>
-            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="解密" Margin="15,0,0,0"/>
+            <TextBox Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Text="{Binding CipherText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="AlphaFilter"/>
+            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="解密" Margin="15,0,0,0" Command="{Binding DecryptCommand}"/>
         </Grid>
     </Grid>
 </Page>

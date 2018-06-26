@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ClassicCipher</RootNamespace>
     <AssemblyName>ClassicCipher</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
@@ -94,6 +94,14 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Design\DesignDataService.cs" />
+    <Compile Include="Model\CaesarModel.cs" />
+    <Compile Include="Model\HillModel.cs" />
+    <Compile Include="Model\PlayfairModel.cs" />
+    <Compile Include="Model\VigenereModel.cs" />
+    <Compile Include="ViewModel\CaesarViewModel.cs" />
+    <Compile Include="ViewModel\HillViewModel.cs" />
+    <Compile Include="ViewModel\PlayfairViewModel.cs" />
+    <Compile Include="ViewModel\VigenereViewModel.cs" />
     <Compile Include="View\CaesarPage.xaml.cs">
       <DependentUpon>CaesarPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +131,11 @@
     <None Include="Win10_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
