@@ -2,15 +2,12 @@
     x:Class="ClassicCipher.View.PlayfairPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ClassicCipher.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModel="using:ClassicCipher.ViewModel"
     mc:Ignorable="d"
+    DataContext="{Binding Playfair, Source={StaticResource Locator}}"
     Loaded="CancelFocusonPageLoaded">
-    <Page.DataContext>
-        <viewModel:PlayfairViewModel/>
-    </Page.DataContext>
     <Page.Background>
         <AcrylicBrush BackgroundSource="HostBackdrop" FallbackColor="#FFE6E6E6" TintColor="White" TintOpacity="0.5"/>
     </Page.Background>
@@ -29,7 +26,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button Grid.ColumnSpan="3" Margin="15" Style="{StaticResource ScalingLabelButton}" Content="Playfair Cipher"/>
-        <Grid Grid.Row="1" Height="70" MaxHeight="70" Margin="15,0">
+        <Grid Grid.Row="1" Height="70" MaxHeight="70" Margin="10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -43,7 +40,7 @@
             <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[15], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
             <TextBox Grid.Column="4" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[20], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
         </Grid>
-        <Grid Grid.Row="2" Height="70" MaxHeight="70" Margin="15,0">
+        <Grid Grid.Row="2" Height="70" MaxHeight="70" Margin="10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -57,7 +54,7 @@
             <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[16], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
             <TextBox Grid.Column="4" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[21], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
         </Grid>
-        <Grid Grid.Row="3" Height="70" MaxHeight="70" Margin="15,0">
+        <Grid Grid.Row="3" Height="70" MaxHeight="70" Margin="10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -71,7 +68,7 @@
             <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[17], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
             <TextBox Grid.Column="4" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[22], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
         </Grid>
-        <Grid Grid.Row="4" Height="70" MaxHeight="70" Margin="15,0">
+        <Grid Grid.Row="4" Height="70" MaxHeight="70" Margin="10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -85,7 +82,7 @@
             <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[18], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
             <TextBox Grid.Column="4" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[23], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
         </Grid>
-        <Grid Grid.Row="5" Height="70" MaxHeight="70" Margin="15,0">
+        <Grid Grid.Row="5" Height="70" MaxHeight="70" Margin="10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -99,7 +96,7 @@
             <TextBox Grid.Column="3" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[19], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
             <TextBox Grid.Column="4" Style="{ThemeResource ButtonStyleLabel}" Text="{Binding CurrentMatrix[24], Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,0"/>
         </Grid>
-        <Button Grid.Row="6" Height="70" MaxHeight="70" Margin="22.5,0" Style="{StaticResource ScalingButtonSmall}" Content="重置矩阵" Command="{Binding ResetCommand}"/>
+        <Button Grid.Row="6" Height="70" MaxHeight="70" Margin="15,0" Style="{StaticResource ScalingButtonSmall}" Content="重置矩阵" Command="{Binding ResetCommand}"/>
         <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Height="70" MaxHeight="70" Margin="15,0" Text="{Binding PlayfairKey, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="AlphaFilter"/>
         <Grid Grid.Row="2" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">
             <Grid.ColumnDefinitions>
@@ -107,7 +104,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Style="{StaticResource ScalingLabelButton}" Content="密钥"/>
-            <Button Grid.Column="2" Style="{StaticResource ScalingButtonSmall}" Content="生成矩阵" Command="{Binding CreateCommand}"/>
+            <Button Grid.Column="1" Style="{StaticResource ScalingButtonSmall}" Content="生成矩阵" Command="{Binding CreateCommand}"/>
         </Grid>
         <TextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource VerticalMediumTextBox}" TextAlignment="Left" FontSize="25" Height="70" MaxHeight="70" Margin="15,0" Text="{Binding PlainText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="AlphaFilter"/>
         <Grid Grid.Row="4" Grid.Column="1" Height="70" MaxHeight="70" Margin="15,0">

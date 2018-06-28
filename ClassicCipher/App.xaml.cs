@@ -7,8 +7,10 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using ClassicCipher.View;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
+using GalaSoft.MvvmLight.Views;
 
 namespace ClassicCipher
 {
@@ -130,13 +132,8 @@ namespace ClassicCipher
         /// <param name="e"></param>
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame != null && rootFrame.CanGoBack)
-            {
-                e.Handled = true;
-                rootFrame.GoBack();
-            }
+            INavigationService navigationService = ServiceLocator.Current.GetInstance<INavigationService>();
+            navigationService.GoBack();
         }
     }
 }

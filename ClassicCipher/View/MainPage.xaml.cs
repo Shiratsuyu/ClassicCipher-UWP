@@ -10,21 +10,7 @@ namespace ClassicCipher.View
         public MainPage()
         {
             InitializeComponent();
-
-            SystemNavigationManager.GetForCurrentView().BackRequested += SystemNavigationManagerBackRequested;
-
-            Loaded += (s, e) =>
-            {
-            };
         }
 
-        private void SystemNavigationManagerBackRequested(object sender, BackRequestedEventArgs e)
-        {
-            if (Frame.CanGoBack)
-            {
-                e.Handled = true;
-                Frame.GoBack();
-            }
-        }
     }
 }

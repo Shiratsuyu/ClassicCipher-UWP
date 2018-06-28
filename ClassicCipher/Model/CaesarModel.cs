@@ -10,6 +10,10 @@ namespace ClassicCipher.Model
     {
         public string CaesarEncrypt(string PlainText, int Offset)
         {
+            if (Offset < 0)
+            {
+                Offset += 26;
+            }
             char[] Encyclopedia = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
             StringBuilder sb = new StringBuilder();
             foreach (char c in PlainText.ToUpper())

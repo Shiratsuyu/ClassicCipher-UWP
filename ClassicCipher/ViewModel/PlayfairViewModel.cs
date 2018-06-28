@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 using ClassicCipher.Model;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Views;
 
 namespace ClassicCipher.ViewModel
 {
-    class PlayfairMatrix
+    public class PlayfairMatrix
     {
         private static readonly char[] _alphabet = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
@@ -68,24 +69,18 @@ namespace ClassicCipher.ViewModel
         }
     }
 
-    class PlayfairViewModel : ViewModelBase
+    public class PlayfairViewModel : ViewModelBase
     {
+        private readonly IDataService _dataService;
+        private readonly INavigationService _navigationService;
         private PlayfairModel _playfairInstance;
-
         private PlayfairMatrix _cuttentMatrix;
-
         private string _playfairKey;
-
         private string _plainText;
-
         private string _cipherText;
-
         private RelayCommand _resetCommand;
-
         private RelayCommand _createCommand;
-
         private RelayCommand _encryptCommand;
-
         private RelayCommand _decryptCommand;
 
         public PlayfairMatrix CurrentMatrix
@@ -206,8 +201,10 @@ namespace ClassicCipher.ViewModel
             }
         }
 
-        public PlayfairViewModel()
+        public PlayfairViewModel(IDataService dataService, INavigationService navigationService)
         {
+            _dataService = dataService;
+            _navigationService = navigationService;
             _playfairInstance = new PlayfairModel("ABCDE");
             _cuttentMatrix = new PlayfairMatrix();
             CurrentMatrix.Key = "ABCDE";

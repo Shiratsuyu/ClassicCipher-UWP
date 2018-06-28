@@ -6,7 +6,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,9 +22,9 @@ namespace ClassicCipher.View
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class CaesarPage : Page
+    public sealed partial class VigenereKeyRoundPage : Page
     {
-        public CaesarPage()
+        public VigenereKeyRoundPage()
         {
             this.InitializeComponent();
         }

@@ -101,6 +101,7 @@
     <Compile Include="ViewModel\CaesarViewModel.cs" />
     <Compile Include="ViewModel\HillViewModel.cs" />
     <Compile Include="ViewModel\PlayfairViewModel.cs" />
+    <Compile Include="ViewModel\VigenereKeyRoundViewModel.cs" />
     <Compile Include="ViewModel\VigenereViewModel.cs" />
     <Compile Include="View\CaesarPage.xaml.cs">
       <DependentUpon>CaesarPage.xaml</DependentUpon>
@@ -119,6 +120,9 @@
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\PlayfairPage.xaml.cs">
       <DependentUpon>PlayfairPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VigenereKeyRoundPage.xaml.cs">
+      <DependentUpon>VigenereKeyRoundPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\VigenerePage.xaml.cs">
       <DependentUpon>VigenerePage.xaml</DependentUpon>
@@ -202,6 +206,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\PlayfairPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VigenereKeyRoundPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

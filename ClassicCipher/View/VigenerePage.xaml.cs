@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,6 +24,7 @@ namespace ClassicCipher.View
     /// </summary>
     public sealed partial class VigenerePage : Page
     {
+
         public VigenerePage()
         {
             this.InitializeComponent();
@@ -59,6 +61,21 @@ namespace ClassicCipher.View
             if (Regex.IsMatch(((TextBox)sender).Text, @"[^A-Za-z]+"))
             {
                 ((TextBox)sender).Text = Regex.Replace(((TextBox)sender).Text, @"[^A-Za-z]+", "");
+                ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
+            }
+        }
+
+        private void MaxLength20(object sender, TextChangedEventArgs e)
+        {
+            if (Regex.IsMatch(((TextBox)sender).Text, @"[^A-Za-z]+"))
+            {
+                ((TextBox)sender).Text = Regex.Replace(((TextBox)sender).Text, @"[^A-Za-z]+", "");
+                ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
+            }
+
+            if (((TextBox) sender).Text.Length > 20)
+            {
+                ((TextBox) sender).Text = ((TextBox) sender).Text.Substring(0, 20);
                 ((TextBox)sender).Select(((TextBox)sender).Text.Length, 0);
             }
         }

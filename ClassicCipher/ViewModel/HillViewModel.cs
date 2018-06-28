@@ -11,26 +11,19 @@ using GalaSoft.MvvmLight.Views;
 
 namespace ClassicCipher.ViewModel
 {
-    class HillViewModel : ViewModelBase
+    public class HillViewModel : ViewModelBase
     {
+        private readonly IDataService _dataService;
+        private readonly INavigationService _navigationService;
         private HillModel _hillInstance;
-
         private List<int> _keyList;
-
         private List<int> _inverseKeyList;
-
         private string _hillKey;
-
         private string _plainText;
-
         private string _cipherText;
-
         private RelayCommand _randomKeyCommand;
-
         private RelayCommand _importKeyCommand;
-
         private RelayCommand _encryptCommand;
-
         private RelayCommand _decryptCommand;
 
         public List<int> KeyList
@@ -141,7 +134,7 @@ namespace ClassicCipher.ViewModel
             {
                 return _decryptCommand ??
                        (_decryptCommand = new RelayCommand(
-                           () => PlainText = _hillInstance.Decrypt(CipherText),
+                           () => PlainText = _hillInstance.Decrypt(CipherText).ToLower(),
                            () => (!string.IsNullOrEmpty(CipherText) && (InverseKeyList != null))));
             }
         }
@@ -280,8 +273,10 @@ namespace ClassicCipher.ViewModel
             }
         }
 
-        public HillViewModel()
+        public HillViewModel(IDataService dataService, INavigationService navigationService)
         {
+            _dataService = dataService;
+            _navigationService = navigationService;
             _hillInstance = new HillModel(3);
         }
     }

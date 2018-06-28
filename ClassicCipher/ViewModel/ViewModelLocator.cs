@@ -20,6 +20,7 @@ namespace ClassicCipher.ViewModel
         public const string PlayfairPageKey = "PlayfairPage";
         public const string HillPageKey = "HillPageKey";
         public const string VigenerePageKey = "VigenerePage";
+        public const string VigenereKeyRoundPageKey = "VigenereKeyRoundPage";
         /// <summary>
         /// This property can be used to force the application to run with design time data.
         /// </summary>
@@ -40,6 +41,7 @@ namespace ClassicCipher.ViewModel
             nav.Configure(PlayfairPageKey, typeof(PlayfairPage));
             nav.Configure(HillPageKey, typeof(HillPage));
             nav.Configure(VigenerePageKey, typeof(VigenerePage));
+            nav.Configure(VigenereKeyRoundPageKey, typeof(VigenereKeyRoundPage));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             SimpleIoc.Default.Register<IDialogService, DialogService>();
@@ -55,6 +57,11 @@ namespace ClassicCipher.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<CaesarViewModel>();
+            SimpleIoc.Default.Register<PlayfairViewModel>();
+            SimpleIoc.Default.Register<HillViewModel>();
+            SimpleIoc.Default.Register<VigenereViewModel>();
+            SimpleIoc.Default.Register<VigenereKeyRoundViewModel>();
         }
 
         /// <summary>
@@ -64,5 +71,10 @@ namespace ClassicCipher.ViewModel
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
+        public CaesarViewModel Caesar => ServiceLocator.Current.GetInstance<CaesarViewModel>();
+        public PlayfairViewModel Playfair => ServiceLocator.Current.GetInstance<PlayfairViewModel>();
+        public HillViewModel Hill => ServiceLocator.Current.GetInstance<HillViewModel>();
+        public VigenereViewModel Vigenere => ServiceLocator.Current.GetInstance<VigenereViewModel>();
+        public VigenereKeyRoundViewModel VigenereKeyRound => ServiceLocator.Current.GetInstance<VigenereKeyRoundViewModel>();
     }
 }

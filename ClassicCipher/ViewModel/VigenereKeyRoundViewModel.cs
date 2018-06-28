@@ -1,34 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassicCipher.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 
 namespace ClassicCipher.ViewModel
 {
-    public class CaesarAlphabet
-    {
-        private const char _source = 'A';
-
-        public int Offset = 0;
-
-        public char this[int i]
-        {
-            get => (char)(_source + (Offset + 26 + i) % 26);
-        }
-    }
-
-    public class CaesarViewModel : ViewModelBase
+    public class VigenereKeyRoundViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
         private readonly INavigationService _navigationService;
         private readonly CaesarModel _caesarInstance;
         private CaesarAlphabet _offSetAlphabet;
+        private VigenereKeyViewArgument.Argument _roundArgument;
+        private string _title;
         private int _offset;
         private string _plainText;
         private string _cipherText;
@@ -48,11 +38,40 @@ namespace ClassicCipher.ViewModel
             }
         }
 
+        public VigenereKeyViewArgument.Argument RoundArgument
+        {
+            get
+            {
+                return _roundArgument;
+            }
+            set
+            {
+                _roundArgument = value;
+                Title = "第" + RoundArgument.index + "轮，密钥字母：" + RoundArgument.keychar;
+                OffSet = RoundArgument.keychar - 65;
+                PlainText = "";
+                CipherText = "";
+            }
+        }
+
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value;
+                RaisePropertyChanged<string>(nameof(Title));
+            }
+        }
+
         public int OffSet
         {
             get
             {
-                return _offset; 
+                return _offset;
             }
             set
             {
@@ -122,8 +141,10 @@ namespace ClassicCipher.ViewModel
             }
         }
 
-        public CaesarViewModel(IDataService dataService, INavigationService navigationService)
+        public VigenereKeyRoundViewModel(IDataService dataService, INavigationService navigationService)
         {
+            Messenger.Default.Register<VigenereKeyViewArgument.Argument>(this,
+                (arg) => RoundArgument = arg);
             _dataService = dataService;
             _navigationService = navigationService;
             _caesarInstance = new CaesarModel();
